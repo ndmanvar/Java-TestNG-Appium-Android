@@ -56,8 +56,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
     @DataProvider(name = "hardCodedBrowsers", parallel = true)
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
-                new Object[]{"Android", "Samsung Galaxy S4 Emulator", "4.4", "http://saucelabs.com/example_files/ContactManager.apk", "", "portrait", "1.4.11"},
-                new Object[]{"Android", "Android Emulator", "4.4", "http://saucelabs.com/example_files/ContactManager.apk", "", "portrait", "1.4.11"},
+                new Object[]{"Android", "Samsung Galaxy S4 Device", "4.4", "http://saucelabs.com/example_files/ContactManager.apk", "", "portrait", "1.4.11"},
+                new Object[]{"Android", "Samsung Galaxy S5 Device", "4.4", "http://saucelabs.com/example_files/ContactManager.apk", "", "portrait", "1.4.11"},
         };
     }
 
@@ -86,7 +86,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         capabilities.setCapability("deviceOrientation", deviceOrientation);
         capabilities.setCapability("appiumVersion", appiumVersion);
 
-        capabilities.setCapability("name", "Java-TestNG-Appium-iOS");
+        capabilities.setCapability("name", "Java-TestNG-Appium-Android");
 
         webDriver.set(new AndroidDriver<WebElement>(
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
@@ -105,11 +105,11 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
      * @param app Represents the location of the app under test.
      * @throws app if an error occurs during the running of the test
      */
-    @Test(dataProvider = "hardCodedBrowsers")
-    public void launchTest(String platformName, String deviceName, String platformVersion, String app, String browserName, String deviceOrientation, String appiumVersion) throws Exception {
-        WebDriver driver = createDriver(platformName, deviceName, platformVersion, app, browserName, deviceOrientation, appiumVersion);
-        driver.quit();
-    }
+    // @Test(dataProvider = "hardCodedBrowsers")
+    // public void launchTest(String platformName, String deviceName, String platformVersion, String app, String browserName, String deviceOrientation, String appiumVersion) throws Exception {
+    //     WebDriver driver = createDriver(platformName, deviceName, platformVersion, app, browserName, deviceOrientation, appiumVersion);
+    //     driver.quit();
+    // }
 
     /**
      * Runs a simple test that clicks the add contact button.
