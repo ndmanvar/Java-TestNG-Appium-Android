@@ -97,21 +97,6 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
     }
 
     /**
-     * Runs a simple test verifying we were able to launch and close the browser
-     *
-     * @param platformName Represents the platform to be run.
-     * @param deviceName Represents the device to be tested on
-     * @param platform Version Represents version of the platform.
-     * @param app Represents the location of the app under test.
-     * @throws app if an error occurs during the running of the test
-     */
-    // @Test(dataProvider = "hardCodedBrowsers")
-    // public void launchTest(String platformName, String deviceName, String platformVersion, String app, String browserName, String deviceOrientation, String appiumVersion) throws Exception {
-    //     WebDriver driver = createDriver(platformName, deviceName, platformVersion, app, browserName, deviceOrientation, appiumVersion);
-    //     driver.quit();
-    // }
-
-    /**
      * Runs a simple test that clicks the add contact button.
      *
      * @param platformName Represents the platform to be run.
