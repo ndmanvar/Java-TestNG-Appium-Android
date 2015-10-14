@@ -74,7 +74,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
      * @return
      * @throws MalformedURLException if an error occurs parsing the url
      */
-    private WebDriver createDriver(String platformName, String deviceName, String platformVersion, String app, String browserName, String deviceOrientation, String appiumVersion) throws MalformedURLException {
+    private WebDriver createDriver(String platformName, String deviceName, String platformVersion, String app, String browserName, String deviceOrientation, String appiumVersion, String methodName) throws MalformedURLException {
 
     	DesiredCapabilities capabilities = new DesiredCapabilities();
 
@@ -86,7 +86,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         capabilities.setCapability("deviceOrientation", deviceOrientation);
         capabilities.setCapability("appiumVersion", appiumVersion);
 
-        capabilities.setCapability("name", "Java-TestNG-Appium-Android");
+        String jobName = methodName + '_' + deviceName + '_' + platformName + '_' + platformVersion;
+        capabilities.setCapability("name", jobName);
 
         webDriver.set(new AndroidDriver<WebElement>(
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
@@ -106,8 +107,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
      * @throws Exception if an error occurs during the running of the test
      */
     @Test(dataProvider = "hardCodedBrowsers")
-    public void addContactTest(String platformName, String deviceName, String platformVersion, String app, String browserName, String deviceOrientation, String appiumVersion) throws Exception {
-    	WebDriver driver = createDriver(platformName, deviceName, platformVersion, app, browserName, deviceOrientation, appiumVersion);
+    public void addContactTest(String platformName, String deviceName, String platformVersion, String app, String browserName, String deviceOrientation, String appiumVersion, Method method) throws Exception {
+    	WebDriver driver = createDriver(platformName, deviceName, platformVersion, app, browserName, deviceOrientation, appiumVersion, method.getName());
     	
     	WebElement addContactButton = driver.findElement(By.name("Add Contact"));
     	addContactButton.click();
