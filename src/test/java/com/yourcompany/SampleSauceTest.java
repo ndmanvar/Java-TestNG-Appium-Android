@@ -56,8 +56,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
     @DataProvider(name = "hardCodedBrowsers", parallel = true)
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
-                new Object[]{"Android", "Samsung Galaxy S4 Emulator", "4.4", "http://saucelabs.com/example_files/ContactManager.apk", "", "portrait", "1.4.11"},
-                new Object[]{"Android", "Android Emulator", "4.4", "http://saucelabs.com/example_files/ContactManager.apk", "", "portrait", "1.4.11"},
+//                new Object[]{"Android", "Samsung Galaxy S4 Emulator", "4.4", "sauce-storage:org.wordpress.android-4.5.2-APK4Fun.com.apk", "", "portrait", "1.4.11"}
+                new Object[]{"Android", "Android Emulator", "4.4", "sauce-storage:org.wordpress.android-4.5.2-APK4Fun.com.apk", "", "portrait", "1.4.11"}
         };
     }
 
@@ -108,29 +108,11 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
     @Test(dataProvider = "hardCodedBrowsers")
     public void launchTest(String platformName, String deviceName, String platformVersion, String app, String browserName, String deviceOrientation, String appiumVersion) throws Exception {
         WebDriver driver = createDriver(platformName, deviceName, platformVersion, app, browserName, deviceOrientation, appiumVersion);
-        driver.quit();
-    }
-
-    /**
-     * Runs a simple test that clicks the add contact button.
-     *
-     * @param platformName Represents the platform to be run.
-     * @param deviceName Represents the device to be tested on
-     * @param platform Version Represents version of the platform.
-     * @param app Represents the location of the app under test.
-     * @throws Exception if an error occurs during the running of the test
-     */
-    @Test(dataProvider = "hardCodedBrowsers")
-    public void addContactTest(String platformName, String deviceName, String platformVersion, String app, String browserName, String deviceOrientation, String appiumVersion) throws Exception {
-    	WebDriver driver = createDriver(platformName, deviceName, platformVersion, app, browserName, deviceOrientation, appiumVersion);
-    	
-    	WebElement addContactButton = driver.findElement(By.name("Add Contact"));
-    	addContactButton.click();
-    
-    	List<WebElement> textFieldsList = driver.findElements(By.className("android.widget.EditText"));
-    	textFieldsList.get(0).sendKeys("Some Name");
-    	textFieldsList.get(2).sendKeys("Some@example.com");
-    	driver.findElement(By.name("Save")).click();
+//        driver.findElement(arg0)
+        driver.findElement(By.id("org.wordpress.android:id/nux_username")).sendKeys("DummyUser");
+        driver.findElement(By.id("org.wordpress.android:id/nux_password")).sendKeys("DummyUser");
+        driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout[4]")).click();
+        
         driver.quit();
     }
 
