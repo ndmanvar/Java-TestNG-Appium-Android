@@ -110,7 +110,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         WebDriver driver = createDriver(platformName, deviceName, platformVersion, app, browserName, deviceOrientation, appiumVersion);
 
         driver.findElement(By.id("org.wordpress.android:id/nux_username")).sendKeys("DummyUser");
-        driver.findElement(By.id("org.wordpress.android:id/nux_password")).sendKeys("DummyUser");
+        driver.findElement(By.id("org.wordpress.android:id/nux_password")).sendKeys("DummyPassword");
         driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout[4]")).click();
         
         driver.quit();
