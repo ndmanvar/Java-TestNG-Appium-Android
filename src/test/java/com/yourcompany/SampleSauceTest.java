@@ -56,8 +56,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
     @DataProvider(name = "hardCodedBrowsers", parallel = true)
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
-                new Object[]{"Android", "Samsung Galaxy S4 Device", "4.4", "http://saucelabs.com/example_files/ContactManager.apk", "", "portrait", "1.4.11"},
-                new Object[]{"Android", "Samsung Galaxy S5 Device", "4.4", "http://saucelabs.com/example_files/ContactManager.apk", "", "portrait", "1.4.11"},
+                new Object[]{"Android", "Samsung Galaxy S4 Emulator", "4.4", "http://saucelabs.com/example_files/ContactManager.apk", "", "portrait", "1.4.11"},
+                new Object[]{"Android", "Samsung Galaxy S5 Emulator", "4.4", "http://saucelabs.com/example_files/ContactManager.apk", "", "portrait", "1.4.11"},
         };
     }
 
