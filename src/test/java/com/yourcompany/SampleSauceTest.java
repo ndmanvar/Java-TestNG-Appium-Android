@@ -108,7 +108,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
     @Test(dataProvider = "hardCodedBrowsers")
     public void launchTest(String platformName, String deviceName, String platformVersion, String app, String browserName, String deviceOrientation, String appiumVersion) throws Exception {
         WebDriver driver = createDriver(platformName, deviceName, platformVersion, app, browserName, deviceOrientation, appiumVersion);
-//        driver.findElement(arg0)
+
         driver.findElement(By.id("org.wordpress.android:id/nux_username")).sendKeys("DummyUser");
         driver.findElement(By.id("org.wordpress.android:id/nux_password")).sendKeys("DummyUser");
         driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout[4]")).click();
